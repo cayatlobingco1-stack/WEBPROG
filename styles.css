@@ -1,0 +1,63 @@
+body {
+    background-color: lightblue;
+}
+h1{
+    color:white;
+    text-align: center;
+    font-family:Arial;
+    font-size:16px;
+}
+p{
+    font-family: verdana;
+    font-size: 20px;
+}
+
+.note{color: green;}
+#alert {color: red;
+}
+
+body{background-color:powderblue;
+    border: 5px solid;
+    padding: 20px;
+    margin: 50px;
+    border-radius: 25px;
+}
+
+nav a {color:pink;}
+a:hover{text-decoration:underline;
+        font-size:25px;}
+
+:root {
+    --brand: #1f7a5c;
+    --space: 1rem;
+}
+
+.btn {
+    background: var (#1f7a5c);
+    padding: var(1rem);
+}
+
+.bg1 {
+    background-color:pink;
+}
+header{
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    background-color: #1f7a5c;
+    padding: 20px;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+style1 {
+    boarder:  10px;
+    padding: 16px;
+    margin: 50px;
+}
+div {
+  box-shadow: 10px 10px;
+}

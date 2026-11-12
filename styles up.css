@@ -1,0 +1,566 @@
+/* ===== ALL STYLES LIVE IN THIS FILE ===== */
+
+/* HTML (element/type) selectors */
+html{background:#14171f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#14171f;display:grid;place-items:center;min-height:100vh;padding:12px}
+img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+
+/* ID selectors */
+#scene{box-shadow:0 0 30px rgba(0,0,0,.5)}
+#ccsLogo{border-radius:50%}
+
+/* ===== Class selectors (formerly internal CSS) ===== */
+:root{--cream:#ece2c8;--cream-hi:#f6f0de;--shade:#a49a81;--dark:#2b261e;--roof:#9a4a40}
+.scene{position:relative;width:100%;max-width:1600px;aspect-ratio:2048/1150;overflow:hidden;container-type:inline-size;
+  background:linear-gradient(180deg,#5b98f2 0%,#7db4fa 20%,#a6cffb 42%,#cbe2f9 60%,#e2f0fc 78%)}
+.art{position:absolute;inset:0;--px:calc(1cqw / 20.48)}
+.art>*,.art svg{position:absolute}
+.poly{inset:0}
+.art i{position:absolute;display:block}
+
+.cloud{background:radial-gradient(ellipse,#fff 25%,rgba(255,255,255,0) 70%);filter:blur(7px);opacity:.85}
+.haze{background:radial-gradient(ellipse,rgba(235,245,255,.75),rgba(235,245,255,0) 70%)}
+.base{background:#b5b3a6}
+.stainv{background:rgba(70,60,50,.4)}
+.skyr{left:56%;top:10%;width:44%;height:90%;background:linear-gradient(#cfe6fa,#dfeaf1);border-radius:40% 40% 0 0}
+.hill{background:linear-gradient(#a9c0c9,#8fb0a6)}
+.field{background:linear-gradient(#9bab68,#b8ad5c)}
+.lwall{background:linear-gradient(#e2dfd2,#bfbcad)}
+.lpeb{background:#a49a82}
+
+.rwall{background:linear-gradient(90deg,#ece5cc,#f3ecd3 50%,#f7f0d8)}
+.rshade{background:rgba(170,150,110,.16)}
+.rshade2{background:linear-gradient(rgba(110,100,80,.0),rgba(110,100,80,.16));filter:blur(6px)}
+.rlow{background:linear-gradient(#d9d1b8,#bdb59a)}
+.rroof{background:repeating-linear-gradient(0deg,rgba(60,15,15,.35) 0 2px,transparent 2px calc(8*var(--px))),linear-gradient(#b0554a,#8a3a33)}
+.rfascia{background:#5a1b2f}
+.rcolumn{background:linear-gradient(90deg,#fbf6e2,#e5dec6)}
+.wslab{background:#e9e2cb;box-shadow:0 3px 3px rgba(0,0,0,.2)}
+.wcorr{background:repeating-linear-gradient(90deg,#a55a49 0 calc(7*var(--px)),#7c3b30 calc(7*var(--px)) calc(9*var(--px)))}
+.wunder{background:linear-gradient(#3b3732,#55514a)}
+.pipe{background:linear-gradient(90deg,#e0ddd0,#a7a49a)}
+.cornerline{background:rgba(60,60,60,.25)}
+.post{background:#85888d} .hrail{background:#9a9da1} .hslab{background:linear-gradient(#4a4a47,#2f2f2d)}
+.bush{background:radial-gradient(ellipse at 40% 35%,#6a8a45,#3b5a28);border-radius:45%}
+.trunk{background:#4a3c2c}
+
+.wall{background:linear-gradient(90deg,#eadfc4,#f0e7cf 55%,#e4d9bd)}
+.eaveshade{background:linear-gradient(rgba(50,38,22,.5),rgba(50,38,22,0))}
+.roof{background:linear-gradient(rgba(255,230,210,.1),rgba(0,0,0,.2)),
+  repeating-linear-gradient(0deg,rgba(55,15,15,.4) 0 2px,transparent 2px calc(8*var(--px))),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 calc(2*var(--px)),transparent calc(2*var(--px)) calc(18*var(--px))),#8e4136}
+.fascia{background:linear-gradient(#6b2038,#4a1527)}
+.soffit{background:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 calc(2*var(--px)),transparent calc(2*var(--px)) calc(11*var(--px))),linear-gradient(#a2937a,#7d6f58)}
+
+.arch{overflow:hidden}
+.f1,.f3{border-radius:15% 15% 0 0 / 30% 30% 0 0}
+.f2{border-radius:22% 22% 0 0 / 46% 46% 0 0}
+.f1{background:linear-gradient(#8c7f66 0,#c2b393 22%,#d6c9ab 100%)}
+.f2{background:linear-gradient(#8a7a5c 0,#c7b693 30%,#dccdae 100%)}
+.f3{background:linear-gradient(#766b57 0,#a69a80 25%,#c1b597 100%)}
+.arch .sh{inset:0;border-radius:inherit;
+  box-shadow:inset calc(16*var(--px)) 0 calc(14*var(--px)) calc(-6*var(--px)) rgba(0,0,0,.26),inset 0 calc(14*var(--px)) calc(16*var(--px)) calc(-6*var(--px)) rgba(0,0,0,.34)}
+/* Grills: exactly 20 bars per opening, regardless of the opening's width */
+.bars{inset:0;background:linear-gradient(90deg,#2b261e 0 40%,transparent 40%) 0 0/5% 100% repeat-x;
+  border-top:calc(4*var(--px)) solid #2b261e}
+.bars.lean,.bars.lean2{background:none;overflow:hidden}
+.bars.lean::before,.bars.lean2::before{content:"";position:absolute;top:0;bottom:0;left:-10%;right:-10%;
+  background:linear-gradient(90deg,#2b261e 0 40%,transparent 40%) 0 0/4.1667% 100% repeat-x}
+.bars.lean::before{transform:skewX(12deg)}
+.bars.lean2::before{transform:skewX(-12deg)}
+.win{background:repeating-linear-gradient(180deg,#26301f 0 13%,#6f7f5f 13% 24%);border:calc(2.5*var(--px)) solid #3a372d}
+.bwin{background:repeating-linear-gradient(90deg,#1f1b15 0 calc(3*var(--px)),#cfcab8 calc(3*var(--px)) calc(11*var(--px)));border:calc(3*var(--px)) solid #2b261e}
+.f3 .bwin{background:repeating-linear-gradient(90deg,#1f1b15 0 calc(3*var(--px)),#d9d6ca calc(3*var(--px)) calc(11*var(--px)))}
+.door{background:linear-gradient(#34322d,#1c1a16);border:calc(2*var(--px)) solid #2b261e}
+.gate{background:linear-gradient(90deg,#1f1b15 0 45%,#a39a7f 45%) 0 0/5% 100% repeat-x;border:calc(3*var(--px)) solid #2b261e}
+.pink{background:linear-gradient(#c8957c,#a9755f)}
+.sky2{left:3%;top:20%;width:42%;height:80%;background:linear-gradient(#cfe6fa,#dbe9f0 60%,#b9c9a0)}
+
+.par{background:linear-gradient(#e6dcc0,#efe6cc);box-shadow:inset 0 calc(10*var(--px)) calc(8*var(--px)) rgba(70,55,30,.28),0 2px 0 rgba(90,70,40,.25)}
+.cap{background:linear-gradient(#fbf6e6,#e8dfc6);border-bottom:2px solid rgba(100,85,55,.35);box-shadow:0 3px 3px rgba(0,0,0,.18)}
+.slab{background:linear-gradient(#f6f0de,#d4cdbb);box-shadow:0 2px 2px rgba(0,0,0,.2)}
+.under{background:linear-gradient(rgba(150,140,115,.7),rgba(164,154,129,0))}
+.brk{background:linear-gradient(90deg,#f1e9d3,#dcd3bb);clip-path:polygon(0 0,100% 0,100% 55%,70% 100%,0 100%);box-shadow:3px 3px 4px rgba(0,0,0,.25)}
+.awning{background:linear-gradient(#efefea,#c9ccca)}
+.lamp{border-radius:50%;background:radial-gradient(#e9e6d6 0 40%,#8a8672 41% 75%,#4a473d 76%)}
+.plinth{background:linear-gradient(#e8dfc6,#cbbf9f)}
+
+.entry{background:linear-gradient(#a9856b,#6e5340)}
+.pinkwall{background:linear-gradient(#cf9f86,#b98a72)}
+.tilefloor{background:repeating-conic-gradient(#a85a3f 0 25%,#8f4a33 0 50%) 0 0/calc(22*var(--px)) calc(22*var(--px))}
+.pillarR{background:linear-gradient(90deg,#d9cfb4,#efe6cd)}
+.doorway{border-radius:34% 34% 0 0 / 14% 14% 0 0;background:repeating-linear-gradient(90deg,#17140f 0 calc(3*var(--px)),#3b342a calc(3*var(--px)) calc(11*var(--px)));border:calc(3*var(--px)) solid #1b1814}
+.fan{border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.35)}.fanmount{background:#555}
+.sign{background:linear-gradient(#2e9a52,#237a40);border:calc(2*var(--px)) solid #1b5a32}
+.note{background:#f3f1ea;border:1px solid #bdb9aa}
+.lamp2{background:#232323;border-radius:3px} .speaker{background:linear-gradient(#7a5334,#58381f);border-radius:4px}
+.sw{background:#cfd4d6;border:1px solid #888}
+.p1{background:radial-gradient(circle,#4d3f35 0 28%,transparent 31%) 0 0/calc(12*var(--px)) calc(12*var(--px)),linear-gradient(#f2f2ee 0 72%,#e24a3a 72% 80%,#2f6fd0 80% 88%,#3b9b4a 88%);border:2px solid #d7d7d0}
+.p2{background:repeating-linear-gradient(90deg,transparent 0 calc(9*var(--px)),#1b1b1b calc(9*var(--px)) calc(14*var(--px))) 0 12%/100% 50% no-repeat,#f2f2ee;border:2px solid #d7d7d0}
+
+.planter{background:linear-gradient(#c39466,#a67654)}
+.pedge{background:linear-gradient(#b4b2a2,#8d8b7d)}
+.peb{background:radial-gradient(circle,#c1b394 0 30%,transparent 32%) 0 0/calc(9*var(--px)) calc(9*var(--px)),#8a7c60}
+.ground{background:linear-gradient(180deg,#c3bdab 0%,#cdc8b8 32%,#bdbaac 100%)}
+.gravr{background:radial-gradient(circle,#cfc6ab 0 30%,transparent 32%) 0 0/calc(9*var(--px)) calc(9*var(--px)),#9d9479}
+.ramp{background:linear-gradient(#a8a18c,#8e8874)}
+.rampside{background:#c8c2ae}
+.steps{background:linear-gradient(#b05a40,#7d3a2a)}
+.rail{background:#8b8e92} .rpost{background:#7c7f84} .railsl{background:#8b8e92}
+.twig{background:#6b5a44} .leaf{background:#7d9a4c;border-radius:0 80% 0 80%}
+.pot{background:linear-gradient(#a8a8a0,#7d7d75);border-radius:0 0 45% 45%}
+.joint{background:rgba(40,40,30,.2)} .joint.v{transform:skewX(-6deg)}
+.shadow{background:radial-gradient(ellipse,rgba(52,58,42,.42) 0,rgba(52,58,42,0) 70%)}
+.sunpatch{background:radial-gradient(ellipse,rgba(255,250,225,.35),rgba(255,250,225,0) 70%)}
+.vignette{background:radial-gradient(ellipse at 50% 45%,transparent 65%,rgba(10,20,50,.12))}
+.sun{background:linear-gradient(115deg,rgba(255,244,214,.12),transparent 50%)}
+
+.hazeh{background:linear-gradient(rgba(225,238,250,0),rgba(225,238,250,.85))}
+.mtn2{background:#a9bfd0} .mtn{background:linear-gradient(#8aa3b4,#7f9a86)}
+.farm{background:repeating-linear-gradient(7deg,rgba(55,65,25,.18) 0 3px,transparent 3px 9px),linear-gradient(#8e9560,#767a47)}
+.tree{background:radial-gradient(ellipse,#4b5a2c,#5f6b38 70%);border-radius:50%}
+.lhouse{background:linear-gradient(#e3e1d5,#cfccbd)}
+.lhroof{background:#b9b6a8} .lhshade{background:rgba(90,85,65,.28)}
+.lwin{background:linear-gradient(#34382f,#575c4c);border:2px solid #f1efe6}
+.grass{background:repeating-linear-gradient(100deg,rgba(255,255,200,.1) 0 calc(7*var(--px)),transparent calc(7*var(--px)) calc(16*var(--px))),linear-gradient(#b9ae58,#8f9b46)}
+.lwall2{background:linear-gradient(#a19e90,#7d7a6c)}
+.lwall2top{background:#c9c6b8}
+.lpeb{background:radial-gradient(circle,#c9c0a8 0 28%,transparent 31%) 0 0/calc(8*var(--px)) calc(8*var(--px)),#8f887a}
+.pilL{background:linear-gradient(90deg,rgba(90,72,45,.22),transparent 45%)}
+.land{left:0;top:14%;width:40%;height:86%;background:linear-gradient(#d4e0e2,#c9ceaa 52%,#aaa85a)}
+
+.bushd{background:radial-gradient(ellipse at 40% 35%,#6a8f44,#35552a);border-radius:48%}
+.rwall{background:linear-gradient(90deg,#efe6ca,#f1e9cf 40%,#f6efd7)}
+.rshadeL{background:rgba(150,132,95,.15)}
+.rshade2{background:linear-gradient(rgba(105,92,68,.22),rgba(105,92,68,.06));filter:blur(8px)}
+.rshade3{background:linear-gradient(rgba(105,92,68,0),rgba(105,92,68,.12));filter:blur(16px)}
+.rcolumn{background:linear-gradient(90deg,#f1ead4,#fbf6e6)}
+.rcolshade{background:rgba(130,115,85,.25)}
+.rledge{background:linear-gradient(#fbf8ee,#ece6d2)}
+.rledgesh{background:linear-gradient(rgba(95,85,65,.4),rgba(95,85,65,0))}
+.rhood{background:#f7f3e6} .rhoodsh{background:linear-gradient(rgba(95,85,65,.35),rgba(95,85,65,0))}
+.rbr{background:#e6e0cd;box-shadow:2px 2px 3px rgba(0,0,0,.25)}
+.rroof{background:repeating-linear-gradient(0deg,rgba(60,15,15,.38) 0 2px,transparent 2px calc(8*var(--px))),repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 calc(2*var(--px)),transparent calc(2*var(--px)) calc(16*var(--px))),linear-gradient(#b05a4a,#86382f)}
+.rfascia{background:linear-gradient(#f7f3e6,#e4ddc8)}
+.rfshadow{background:linear-gradient(rgba(60,50,35,.3),rgba(60,50,35,0))}
+.wcorr{background:repeating-linear-gradient(90deg,#a85b49 0 calc(6*var(--px)),#7c3b30 calc(6*var(--px)) calc(8*var(--px)))}
+.wunder{background:linear-gradient(#34312c,#5a564f)}
+.wbeam{background:#6d6a62} .wbeamh{background:#77746b}
+.scol{background:linear-gradient(90deg,#5c5c58,#8a8a85,#4f4f4c)}
+.pipe{background:linear-gradient(90deg,#f0eee4,#a5a298 60%,#85827a)}
+.clamp{background:#5a5851}
+.post{background:#7f8287} .hrail{background:#8e9196} .hslab{background:linear-gradient(#9a9890,#77756d)} .hslabl{background:#4a4944}
+.rbase{background:#d6d0bb}
+.gravr{background:radial-gradient(circle,#d3cab0 0 28%,transparent 31%) 0 0/calc(8*var(--px)) calc(8*var(--px)),radial-gradient(circle,#7e7660 0 22%,transparent 26%) calc(4*var(--px)) calc(4*var(--px))/calc(8*var(--px)) calc(8*var(--px)),#a79e84}
+.rstain{background:linear-gradient(rgba(120,110,80,0),rgba(120,110,80,.18))}
+.bars{border-bottom:calc(4*var(--px)) solid #2b261e}
+
+/* ===== ID selectors: position/size of each element (formerly inline styles) ===== */
+#cloud-1{left:0.000%;top:0.435%;width:10.254%;height:4.783%;transform:skewX(-18deg)}
+#cloud-2{left:5.371%;top:5.391%;width:9.766%;height:4.348%;transform:skewX(-18deg)}
+#cloud-3{left:10.986%;top:16.348%;width:13.184%;height:4.348%;transform:skewX(-18deg)}
+#cloud-4{left:18.945%;top:12.348%;width:6.348%;height:4.348%;transform:skewX(-18deg)}
+#cloud-5{left:39.307%;top:3.652%;width:8.301%;height:5.652%;transform:skewX(-18deg)}
+#cloud-6{left:43.945%;top:2.957%;width:3.662%;height:3.478%;transform:skewX(-18deg)}
+#cloud-7{left:83.008%;top:0.696%;width:10.254%;height:5.217%;transform:skewX(-18deg)}
+#cloud-8{left:80.566%;top:8.000%;width:9.766%;height:8.261%;transform:skewX(-18deg)}
+#cloud-9{left:88.623%;top:13.043%;width:11.377%;height:6.957%;transform:skewX(-18deg)}
+#cloud-10{left:74.219%;top:13.913%;width:3.418%;height:2.435%;transform:skewX(-18deg)}
+#cloud-11{left:1.953%;top:0.000%;width:5.859%;height:2.435%;transform:skewX(-18deg)}
+#cloud-12{left:23.438%;top:6.087%;width:2.930%;height:2.087%;transform:skewX(-18deg)}
+#haze-13{left:0.000%;top:26.087%;width:14.648%;height:22.609%}
+#haze-14{left:73.242%;top:33.043%;width:7.812%;height:17.391%}
+#hazeh-15{left:0.000%;top:48.696%;width:4.883%;height:14.783%}
+#poly-mtn2-16{clip-path:polygon(0.000% 61.913%,1.465% 61.217%,2.930% 61.739%,4.590% 61.043%,4.590% 63.478%,0.000% 63.478%)}
+#poly-mtn-17{clip-path:polygon(0.000% 62.261%,1.074% 61.652%,2.344% 62.087%,3.418% 61.565%,4.590% 61.913%,4.590% 63.304%,0.000% 63.304%)}
+#poly-farm-18{clip-path:polygon(0.000% 62.783%,4.590% 62.522%,4.590% 67.130%,0.000% 67.478%)}
+#tree-19{left:0.293%;top:64.522%;width:0.781%;height:0.696%}
+#tree-20{left:1.465%;top:64.174%;width:1.074%;height:0.609%}
+#tree-21{left:2.930%;top:64.696%;width:0.879%;height:0.609%}
+#tree-22{left:0.684%;top:65.739%;width:1.270%;height:0.783%}
+#tree-23{left:2.539%;top:65.913%;width:1.270%;height:0.696%}
+#poly-lhouse-24{clip-path:polygon(0.000% 67.304%,4.590% 66.348%,4.492% 71.130%,0.000% 71.652%)}
+#poly-lhroof-25{clip-path:polygon(0.000% 67.130%,4.590% 66.174%,4.590% 66.696%,0.000% 67.652%)}
+#poly-lhshade-26{clip-path:polygon(0.000% 70.609%,4.492% 70.000%,4.492% 71.130%,0.000% 71.652%)}
+#lwin-27{left:1.855%;top:67.565%;width:0.586%;height:1.391%}
+#lwin-28{left:3.076%;top:67.217%;width:0.684%;height:1.391%}
+#lwin-29{left:0.000%;top:67.913%;width:0.244%;height:1.304%}
+#poly-grass-30{clip-path:polygon(0.000% 71.652%,4.492% 71.130%,4.492% 74.435%,0.000% 75.652%)}
+#poly-lwall2-31{clip-path:polygon(0.000% 75.652%,4.492% 74.348%,4.492% 76.522%,0.000% 78.000%)}
+#poly-lwall2top-32{clip-path:polygon(0.000% 75.478%,4.492% 74.174%,4.492% 74.696%,0.000% 76.000%)}
+#poly-lpeb-33{clip-path:polygon(0.000% 78.000%,4.492% 76.522%,4.492% 78.957%,4.492% 79.652%,0.000% 81.565%)}
+#poly-base-34{clip-path:polygon(0.000% 78.696%,100.000% 78.696%,100.000% 100.000%,0.000% 100.000%)}
+#bushd-35{left:79.004%;top:53.739%;width:1.953%;height:5.217%}
+#bushd-36{left:78.711%;top:56.522%;width:2.246%;height:6.087%;background:radial-gradient(ellipse at 40% 35%,#58803a,#2f4a22)}
+#bushd-37{left:79.199%;top:60.870%;width:1.758%;height:4.174%}
+#bushd-38{left:79.199%;top:70.870%;width:1.660%;height:3.826%}
+#bushd-39{left:79.492%;top:64.348%;width:1.172%;height:7.826%;background:#2c4420}
+#trunk-40{left:76.465%;top:66.087%;width:0.244%;height:4.348%}
+#bushd-41{left:75.977%;top:64.522%;width:1.367%;height:3.130%}
+#poly-rwall-42{clip-path:polygon(80.029% 36.348%,89.795% 25.565%,100.000% 25.565%,100.000% 86.696%,81.104% 74.348%,80.029% 74.348%)}
+#poly-rshadeL-43{clip-path:polygon(88.037% 48.696%,92.480% 47.391%,92.480% 80.783%,88.037% 78.435%)}
+#poly-rshade2-44{clip-path:polygon(93.555% 66.261%,100.000% 64.348%,100.000% 71.652%,97.168% 72.522%,93.555% 69.739%)}
+#poly-rshade3-45{clip-path:polygon(95.947% 74.957%,100.000% 72.348%,100.000% 86.087%,97.266% 84.522%)}
+#poly-rcolumn-46{clip-path:polygon(89.258% 27.304%,91.699% 26.087%,91.699% 48.870%,89.258% 49.217%)}
+#poly-rcolshade-47{clip-path:polygon(89.258% 27.304%,90.039% 26.957%,90.039% 49.217%,89.258% 49.217%)}
+#poly-rledge-48{clip-path:polygon(88.428% 37.565%,100.000% 30.435%,100.000% 31.913%,88.623% 38.870%)}
+#poly-rledgesh-49{clip-path:polygon(88.623% 38.870%,100.000% 31.913%,100.000% 34.435%,88.965% 41.043%)}
+#poly-rhood-50{clip-path:polygon(93.457% 66.087%,100.000% 64.522%,100.000% 65.478%,93.457% 67.130%)}
+#poly-rhoodsh-51{clip-path:polygon(93.457% 67.130%,100.000% 65.478%,100.000% 67.130%,93.750% 68.696%)}
+#rbr-52{left:92.188%;top:69.217%;width:1.855%;height:0.870%}
+#rbr-53{left:92.188%;top:69.217%;width:0.391%;height:2.435%}
+#poly-rroof-54{clip-path:polygon(89.795% 25.478%,96.289% 18.783%,100.000% 18.435%,100.000% 25.478%)}
+#poly-rfascia-55{clip-path:polygon(79.736% 36.174%,89.844% 25.043%,100.000% 25.043%,100.000% 26.261%,89.844% 26.522%,79.883% 37.652%)}
+#poly-rfshadow-56{clip-path:polygon(79.883% 37.652%,89.844% 26.522%,100.000% 26.348%,100.000% 28.348%,89.844% 28.348%,80.078% 39.304%)}
+#poly-wcorr-57{clip-path:polygon(79.736% 45.217%,91.943% 44.696%,94.678% 45.826%,79.736% 47.391%)}
+#poly-wunder-58{clip-path:polygon(79.736% 47.217%,94.434% 46.435%,91.943% 47.826%,79.736% 49.739%)}
+#wbeam-59{left:80.566%;top:47.391%;width:0.146%;height:2.087%}
+#wbeam-60{left:82.910%;top:47.391%;width:0.146%;height:2.087%}
+#wbeam-61{left:85.254%;top:47.391%;width:0.146%;height:2.087%}
+#wbeam-62{left:87.598%;top:47.391%;width:0.146%;height:2.087%}
+#wbeam-63{left:89.941%;top:47.391%;width:0.146%;height:2.087%}
+#wbeamh-64{left:79.736%;top:48.348%;width:12.207%;height:0.261%}
+#scol-65{left:87.500%;top:49.391%;width:0.342%;height:29.130%}
+#pipe-66{left:91.992%;top:47.391%;width:0.342%;height:33.478%}
+#clamp-67{left:91.846%;top:48.000%;width:0.635%;height:0.522%}
+#clamp-68{left:91.846%;top:55.652%;width:0.635%;height:0.522%}
+#clamp-69{left:91.846%;top:66.087%;width:0.635%;height:0.522%}
+#clamp-70{left:91.846%;top:78.696%;width:0.635%;height:0.522%}
+#post-71{left:80.078%;top:56.696%;width:0.146%;height:4.348%}
+#post-72{left:82.227%;top:56.696%;width:0.146%;height:4.348%}
+#post-73{left:84.375%;top:56.696%;width:0.146%;height:4.348%}
+#post-74{left:86.523%;top:56.696%;width:0.146%;height:4.348%}
+#post-75{left:88.672%;top:56.696%;width:0.146%;height:4.348%}
+#post-76{left:90.820%;top:56.696%;width:0.146%;height:4.348%}
+#hrail-77{left:79.736%;top:56.609%;width:12.305%;height:0.348%}
+#hrail-78{left:79.736%;top:57.739%;width:12.305%;height:0.348%}
+#hrail-79{left:79.736%;top:58.870%;width:12.305%;height:0.348%}
+#hrail-80{left:79.736%;top:60.000%;width:12.305%;height:0.348%}
+#hslab-81{left:79.736%;top:61.130%;width:12.305%;height:1.565%}
+#hslabl-82{left:79.736%;top:62.696%;width:12.305%;height:0.522%}
+#poly-rbase-83{clip-path:polygon(80.566% 74.609%,100.000% 86.609%,100.000% 87.391%,80.811% 75.478%)}
+#poly-gravr-84{clip-path:polygon(80.029% 74.957%,100.000% 86.435%,100.000% 88.174%,91.699% 86.087%,85.156% 83.652%,80.029% 78.348%)}
+#poly-rstain-85{clip-path:polygon(81.104% 71.304%,87.402% 74.783%,87.402% 77.652%,81.104% 74.522%)}
+#poly-wall-86{clip-path:polygon(4.297% 29.217%,79.883% 33.043%,79.883% 80.522%,58.105% 80.174%,58.105% 78.783%,4.297% 78.783%)}
+#poly-pilL-87{clip-path:polygon(4.199% 29.391%,5.859% 29.478%,5.859% 78.783%,4.199% 78.783%)}
+#poly-eaveshade-88{clip-path:polygon(4.297% 29.217%,79.883% 33.043%,79.883% 35.826%,4.297% 32.348%)}
+#poly-roof-89{clip-path:polygon(0.000% 24.696%,24.170% 21.826%,61.035% 21.826%,87.012% 24.957%,87.012% 26.087%,0.000% 26.087%)}
+#poly-fascia-90{clip-path:polygon(0.000% 24.609%,87.012% 24.870%,86.816% 27.043%,0.586% 26.348%)}
+#poly-soffit-91{clip-path:polygon(0.586% 26.348%,86.816% 27.043%,79.883% 33.043%,4.883% 29.304%)}
+#arch-f1-92{left:6.348%;top:30.870%;width:7.812%;height:8.435%}
+#win-93{left:75.00%;top:59.79%;width:22.50%;height:35.05%}
+#par-94{left:5.859%;top:39.304%;width:8.789%;height:4.435%}
+#cap-95{left:5.664%;top:38.957%;width:9.180%;height:0.696%}
+#arch-f1-96{left:15.381%;top:30.870%;width:9.277%;height:8.435%}
+#win-97{left:7.89%;top:59.79%;width:20.00%;height:35.05%}
+#win-98{left:78.95%;top:59.79%;width:20.00%;height:35.05%}
+#par-99{left:14.893%;top:39.304%;width:10.254%;height:4.435%}
+#cap-100{left:14.697%;top:38.957%;width:10.645%;height:0.696%}
+#arch-f1-101{left:26.221%;top:30.957%;width:9.277%;height:8.348%}
+#win-102{left:41.58%;top:56.25%;width:60.53%;height:39.58%}
+#par-103{left:25.732%;top:39.304%;width:10.254%;height:4.435%}
+#cap-104{left:25.537%;top:38.957%;width:10.645%;height:0.696%}
+#arch-f1-105{left:37.109%;top:31.304%;width:9.521%;height:8.000%}
+#win-106{left:24.62%;top:54.35%;width:58.97%;height:41.30%}
+#door-107{left:87.18%;top:63.04%;width:12.31%;height:32.61%}
+#par-108{left:36.621%;top:39.304%;width:10.498%;height:4.435%}
+#cap-109{left:36.426%;top:38.957%;width:10.889%;height:0.696%}
+#arch-f1-110{left:48.438%;top:31.304%;width:9.766%;height:8.000%}
+#win-111{left:4.00%;top:59.78%;width:22.50%;height:34.78%}
+#win-112{left:34.00%;top:54.35%;width:57.50%;height:41.30%}
+#par-113{left:47.949%;top:39.304%;width:10.742%;height:4.435%}
+#cap-114{left:47.754%;top:38.957%;width:11.133%;height:0.696%}
+#arch-f1-115{left:59.668%;top:31.478%;width:9.668%;height:7.826%}
+#win-116{left:20.20%;top:58.89%;width:20.20%;height:37.78%}
+#win-117{left:48.48%;top:62.22%;width:18.18%;height:33.33%}
+#par-118{left:59.180%;top:39.304%;width:10.645%;height:4.435%}
+#cap-119{left:58.984%;top:38.957%;width:11.035%;height:0.696%}
+#arch-f1-120{left:70.898%;top:31.826%;width:7.227%;height:7.478%}
+#win-121{left:59.46%;top:62.79%;width:24.32%;height:34.88%}
+#par-122{left:70.410%;top:39.304%;width:8.203%;height:4.435%}
+#cap-123{left:70.215%;top:38.957%;width:8.594%;height:0.696%}
+#arch-f2-124{left:6.104%;top:47.739%;width:8.057%;height:7.652%}
+#win-125{left:68.48%;top:32.95%;width:26.67%;height:31.82%}
+#par-126{left:5.615%;top:55.391%;width:9.033%;height:5.217%}
+#cap-127{left:5.420%;top:55.043%;width:9.424%;height:0.696%}
+#arch-f2-128{left:15.234%;top:47.652%;width:9.424%;height:7.739%}
+#win-129{left:6.74%;top:35.96%;width:22.80%;height:29.21%}
+#win-130{left:75.65%;top:35.96%;width:22.80%;height:29.21%}
+#gate-131{left:41.45%;top:30.34%;width:24.87%;height:69.66%}
+#par-132{left:14.746%;top:55.391%;width:10.400%;height:5.217%}
+#cap-133{left:14.551%;top:55.043%;width:10.791%;height:0.696%}
+#arch-f2-134{left:26.123%;top:47.826%;width:9.375%;height:7.565%}
+#gate-135{left:31.25%;top:26.44%;width:23.44%;height:73.56%}
+#win-136{left:64.06%;top:36.78%;width:36.46%;height:32.18%}
+#par-137{left:25.635%;top:55.391%;width:10.352%;height:5.217%}
+#cap-138{left:25.439%;top:55.043%;width:10.742%;height:0.696%}
+#arch-f2-139{left:37.207%;top:47.826%;width:9.521%;height:7.565%}
+#win-140{left:17.44%;top:36.78%;width:43.08%;height:34.48%}
+#door-141{left:62.56%;top:22.99%;width:18.46%;height:77.01%}
+#par-142{left:36.719%;top:55.391%;width:10.498%;height:5.217%}
+#cap-143{left:36.523%;top:55.043%;width:10.889%;height:0.696%}
+#arch-f2-144{left:48.438%;top:47.913%;width:9.668%;height:7.478%}
+#door-145{left:4.04%;top:39.53%;width:23.23%;height:60.47%}
+#gate-146{left:31.82%;top:27.91%;width:20.20%;height:72.09%}
+#win-147{left:54.55%;top:37.21%;width:35.35%;height:33.72%}
+#par-148{left:47.949%;top:55.391%;width:10.645%;height:5.217%}
+#cap-149{left:47.754%;top:55.043%;width:11.035%;height:0.696%}
+#arch-f2-150{left:59.766%;top:48.000%;width:9.570%;height:7.391%}
+#gate-151{left:20.92%;top:27.06%;width:23.47%;height:72.94%}
+#win-152{left:46.94%;top:38.82%;width:27.55%;height:30.59%}
+#par-153{left:59.277%;top:55.391%;width:10.547%;height:5.217%}
+#cap-154{left:59.082%;top:55.043%;width:10.938%;height:0.696%}
+#arch-f2-155{left:70.898%;top:48.348%;width:7.129%;height:7.043%}
+#door-156{left:4.11%;top:17.28%;width:53.42%;height:82.72%}
+#par-157{left:70.410%;top:55.391%;width:8.105%;height:5.217%}
+#cap-158{left:70.215%;top:55.043%;width:8.496%;height:0.696%}
+#arch-f3-159{left:5.762%;top:64.174%;width:7.812%;height:9.739%}
+#win-160{left:73.12%;top:24.11%;width:22.50%;height:25.00%}
+#par-161{left:5.273%;top:73.913%;width:8.789%;height:4.783%}
+#cap-162{left:5.078%;top:73.565%;width:9.180%;height:0.696%}
+#arch-f3-163{left:15.137%;top:64.174%;width:9.375%;height:9.739%}
+#win-164{left:5.21%;top:25.00%;width:17.71%;height:25.00%}
+#win-165{left:44.27%;top:25.00%;width:17.71%;height:25.00%}
+#win-166{left:77.08%;top:25.00%;width:17.71%;height:25.00%}
+#par-167{left:14.648%;top:73.913%;width:10.352%;height:4.783%}
+#cap-168{left:14.453%;top:73.565%;width:10.742%;height:0.696%}
+#arch-f3-169{left:25.879%;top:64.348%;width:9.619%;height:9.565%}
+#win-170{left:7.61%;top:23.64%;width:18.27%;height:25.45%}
+#bwin-171{left:58.38%;top:25.45%;width:41.62%;height:63.64%}
+#par-172{left:25.391%;top:73.913%;width:10.596%;height:4.783%}
+#cap-173{left:25.195%;top:73.565%;width:10.986%;height:0.696%}
+#arch-f3-174{left:37.109%;top:64.609%;width:9.375%;height:9.304%}
+#bwin-175{left:34.38%;top:21.50%;width:59.38%;height:61.68%}
+#par-176{left:36.621%;top:73.913%;width:10.352%;height:4.783%}
+#cap-177{left:36.426%;top:73.565%;width:10.742%;height:0.696%}
+#arch-f3-178{left:48.340%;top:64.609%;width:9.766%;height:9.304%}
+#par-179{left:47.852%;top:73.913%;width:10.742%;height:4.783%}
+#cap-180{left:47.656%;top:73.565%;width:11.133%;height:0.696%}
+#arch-f3-181{left:59.766%;top:64.783%;width:9.570%;height:9.130%}
+#pink-182{left:1.02%;top:2.86%;width:98.98%;height:42.86%}
+#par-183{left:59.277%;top:73.913%;width:10.547%;height:4.783%}
+#cap-184{left:59.082%;top:73.565%;width:10.938%;height:0.696%}
+#arch-f3-185{left:70.898%;top:64.870%;width:6.738%;height:9.043%}
+#door-186{left:2.17%;top:1.92%;width:50.72%;height:98.08%}
+#par-187{left:70.410%;top:73.913%;width:7.715%;height:4.783%}
+#cap-188{left:70.215%;top:73.565%;width:8.105%;height:0.696%}
+#slab-189{left:3.320%;top:43.304%;width:76.855%;height:0.957%}
+#under-190{left:3.320%;top:44.261%;width:76.855%;height:1.739%}
+#brk-191{left:2.881%;top:43.826%;width:2.246%;height:3.130%}
+#brk-192{left:12.500%;top:43.826%;width:2.246%;height:3.130%}
+#brk-193{left:23.193%;top:43.826%;width:2.246%;height:3.130%}
+#brk-194{left:34.033%;top:43.826%;width:2.246%;height:3.130%}
+#brk-195{left:45.312%;top:43.826%;width:2.246%;height:3.130%}
+#brk-196{left:56.689%;top:43.826%;width:2.246%;height:3.130%}
+#brk-197{left:67.871%;top:43.826%;width:2.246%;height:3.130%}
+#brk-198{left:76.855%;top:43.826%;width:2.246%;height:3.130%}
+#slab-199{left:3.320%;top:60.435%;width:79.004%;height:0.957%}
+#under-200{left:3.320%;top:61.391%;width:79.004%;height:1.739%}
+#brk-201{left:2.881%;top:60.957%;width:2.246%;height:3.130%}
+#brk-202{left:12.500%;top:60.957%;width:2.246%;height:3.130%}
+#brk-203{left:23.193%;top:60.957%;width:2.246%;height:3.130%}
+#brk-204{left:34.033%;top:60.957%;width:2.246%;height:3.130%}
+#brk-205{left:45.312%;top:60.957%;width:2.246%;height:3.130%}
+#brk-206{left:56.689%;top:60.957%;width:2.246%;height:3.130%}
+#brk-207{left:67.871%;top:60.957%;width:2.246%;height:3.130%}
+#brk-208{left:76.855%;top:60.957%;width:2.246%;height:3.130%}
+#poly-awning-209{clip-path:polygon(59.082% 60.870%,82.324% 60.870%,82.324% 63.478%,59.082% 63.478%)}
+#stainv-210{left:60.547%;top:61.217%;width:0.146%;height:1.739%}
+#stainv-211{left:62.988%;top:61.217%;width:0.146%;height:1.739%}
+#stainv-212{left:64.941%;top:61.217%;width:0.146%;height:1.739%}
+#stainv-213{left:67.627%;top:61.217%;width:0.146%;height:1.739%}
+#stainv-214{left:69.336%;top:61.217%;width:0.146%;height:1.739%}
+#stainv-215{left:73.242%;top:61.217%;width:0.146%;height:1.739%}
+#stainv-216{left:76.172%;top:61.217%;width:0.146%;height:1.739%}
+#stainv-217{left:78.613%;top:61.217%;width:0.146%;height:1.739%}
+#lamp-218{left:18.896%;top:61.565%;width:0.488%;height:0.870%}
+#lamp-219{left:29.932%;top:61.565%;width:0.488%;height:0.870%}
+#lamp-220{left:41.260%;top:61.565%;width:0.488%;height:0.870%}
+#plinth-221{left:4.297%;top:78.696%;width:75.586%;height:1.565%}
+#entry-222{left:59.766%;top:64.783%;width:10.352%;height:14.348%}
+#poly-pinkwall-223{clip-path:polygon(59.863% 64.783%,69.336% 64.783%,69.336% 67.391%,59.863% 67.391%)}
+#door-224{left:59.570%;top:66.957%;width:1.562%;height:12.000%}
+#bwin-225{left:61.279%;top:66.261%;width:2.441%;height:7.478%}
+#win-226{left:63.770%;top:66.435%;width:2.734%;height:2.261%}
+#tilefloor-227{left:65.723%;top:77.043%;width:11.719%;height:3.652%}
+#pillarR-228{left:69.336%;top:64.783%;width:1.562%;height:13.913%}
+#doorway-229{left:70.898%;top:64.522%;width:3.613%;height:14.261%}
+#fan-230{left:70.353%;top:56.200%;width:2.360%;height:4.200%}
+#fanmount-231{left:71.436%;top:60.870%;width:0.244%;height:0.870%}
+#sign-232{left:67.529%;top:68.261%;width:0.732%;height:2.609%}
+#note-233{left:64.111%;top:70.000%;width:0.879%;height:1.478%}
+#note-234{left:65.430%;top:70.261%;width:1.074%;height:1.478%}
+#note-235{left:66.992%;top:72.174%;width:0.586%;height:1.391%}
+#lamp2-236{left:84.473%;top:63.478%;width:1.270%;height:1.043%}
+#speaker-237{left:70.117%;top:63.739%;width:1.074%;height:1.565%}
+#sw-238{left:60.791%;top:65.217%;width:0.488%;height:1.565%}
+#p1-239{left:49.854%;top:64.696%;width:3.467%;height:9.913%}
+#p2-240{left:53.467%;top:64.696%;width:3.467%;height:9.913%}
+#poly-planter-241{clip-path:polygon(1.758% 78.696%,54.004% 79.478%,54.004% 80.696%,0.684% 79.913%)}
+#poly-pedge-242{clip-path:polygon(0.488% 79.913%,54.199% 80.696%,54.297% 82.435%,0.000% 81.391%)}
+#poly-peb-243{clip-path:polygon(0.000% 81.391%,54.297% 82.435%,54.395% 83.652%,0.000% 82.609%)}
+#poly-ground-244{clip-path:polygon(0.000% 82.609%,54.395% 83.652%,58.594% 84.174%,73.389% 84.696%,80.078% 81.913%,83.008% 82.174%,92.773% 85.652%,100.000% 88.696%,100.000% 100.000%,0.000% 100.000%)}
+#poly-ramp-245{clip-path:polygon(58.350% 83.304%,61.035% 80.435%,70.898% 80.435%,72.852% 83.478%)}
+#poly-rampside-246{clip-path:polygon(60.938% 80.696%,71.680% 80.696%,71.875% 81.391%,61.133% 81.391%)}
+#poly-steps-247{clip-path:polygon(71.387% 80.522%,80.078% 81.391%,80.078% 82.261%,71.777% 81.565%)}
+#rail-248{left:60.205%;top:76.348%;width:6.836%;height:0.522%}
+#rail-249{left:60.205%;top:77.478%;width:6.836%;height:0.435%}
+#poly-railsl-250{clip-path:polygon(66.992% 76.348%,72.852% 79.826%,72.852% 80.435%,66.992% 76.957%)}
+#rpost-251{left:60.205%;top:76.522%;width:0.244%;height:6.261%}
+#rpost-252{left:66.895%;top:76.522%;width:0.244%;height:6.261%}
+#rpost-253{left:72.656%;top:76.522%;width:0.244%;height:6.261%}
+#twig-254{left:54.883%;top:75.478%;width:0.195%;height:5.043%;transform:rotate(-8deg)}
+#leaf-255{left:54.297%;top:75.826%;width:0.781%;height:0.696%}
+#leaf-256{left:55.176%;top:76.522%;width:0.781%;height:0.696%;transform:scaleX(-1)}
+#leaf-257{left:54.590%;top:77.913%;width:0.684%;height:0.609%}
+#pot-258{left:54.248%;top:80.174%;width:1.465%;height:2.609%}
+#joint-259{left:0.000%;top:87.826%;width:54.688%;height:0.261%}
+#joint-260{left:0.000%;top:94.783%;width:68.359%;height:0.261%}
+#joint-261{left:54.688%;top:90.435%;width:24.414%;height:0.261%}
+#joint-v-262{left:22.949%;top:83.652%;width:0.146%;height:16.522%}
+#joint-v-263{left:46.875%;top:84.348%;width:0.146%;height:15.652%}
+#joint-v-264{left:64.941%;top:84.783%;width:0.146%;height:15.217%}
+#joint-v-265{left:83.008%;top:86.957%;width:0.146%;height:13.043%}
+#shadow-266{left:-2.930%;top:86.087%;width:31.250%;height:13.913%}
+#shadow-267{left:2.930%;top:92.174%;width:34.180%;height:9.565%}
+#shadow-268{left:5.859%;top:83.043%;width:17.578%;height:5.217%}
+#shadow-269{left:25.391%;top:95.652%;width:20.508%;height:5.217%}
+#shadow-270{left:43.945%;top:96.522%;width:14.648%;height:4.348%}
+#shadow-271{left:12.207%;top:84.783%;width:7.812%;height:2.609%}
+#shadow-272{left:20.996%;top:87.826%;width:10.742%;height:3.478%}
+#shadow-273{left:34.180%;top:84.174%;width:8.789%;height:1.913%}
+#shadow-274{left:73.242%;top:94.783%;width:14.648%;height:4.348%}
+#shadow-275{left:90.332%;top:92.174%;width:9.766%;height:5.217%}
+#sunpatch-276{left:31.250%;top:85.652%;width:31.250%;height:6.957%}
+#sunpatch-277{left:61.035%;top:87.826%;width:25.391%;height:7.826%}
+
+/* =====================================================================
+   MGA TAONG NAGLALAKAD AT KOTSE (idinagdag na bahagi)
+   ---------------------------------------------------------------------
+   PAANO GUMAGANA:
+   1) Ang bawat tao ay gawa sa maliliit na <i> (ulo, katawan, braso, binti).
+   2) May DALAWANG animation ang bawat tao:
+        a) PAGLALAKAD SA SCREEN  -> gumagalaw pakanan/pakaliwa (translateX)
+        b) PAGGALAW NG KATAWAN   -> umuugoy ang binti at braso (rotate)
+   3) Magkakaiba ang bilis, simula at lane ng bawat isa, kaya hindi sila
+      sabay-sabay gumalaw at mukhang totoo.
+   4) --px ang "unit" ng buong drawing. Lahat ng sukat ay nakabase dito
+      para sumunod ang laki kapag nag-resize ang window.
+   ===================================================================== */
+
+/* Haba ng isang buong ikot ng KOTSE lang (66 segundo, paulit-ulit) */
+.art{--cycle:66s}
+
+/* Karaniwang setting ng tao at kotse: nagsisimula sa kaliwang gilid,
+   at hindi nila hinaharang ang mouse */
+.ppl,.car{left:0;pointer-events:none;will-change:transform}
+
+/* Sukat ng "kahon" ng isang tao (50 lapad x 100 taas) */
+.ppl{width:calc(50*var(--px));height:calc(100*var(--px))}
+
+/* .ppl-in = panloob na kahon. Dito nilalagay ang laki (--k) at ang pag-flip.
+   Ang pakaliwa (.goleft) ay binabaliktad (scaleX negatibo) para nakaharap sa kaliwa */
+.ppl-in,.pp-fig,.car-in{position:absolute;inset:0}
+.ppl-in{transform-origin:50% 100%;transform:scale(var(--k))}
+.ppl.goleft .ppl-in{transform:scale(calc(var(--k)*-1),var(--k))}
+
+/* ----- ANG 4 NA TAO -----
+   Mga variable:
+   top    = taas ng lane (mas mababa ang numero = mas malayo sa harap)
+   --k    = laki (mas malapit sa harap = mas malaki)
+   --skin/--hair/--shirt/--pants/--shoe = mga kulay
+   --t    = bilis ng hakbang (mas malaki = mas mabagal ang hakbang)
+   --ph   = pagkakaiba ng simula ng hakbang, para hindi sabay ang paa nila
+   animation = (pangalan) (tagal tumawid sa screen) (linear) (delay) (paulit-ulit)
+   Ang delay (hal. 4s) ay naghihintay muna bago magsimulang lumakad. Ang "backwards" ay nagpapanatili sa tao sa LABAS ng screen habang naghihintay, kaya papasok sila mula sa gilid at wala agad sa harap ng building. */
+
+/* Tao A: pakanan, teal na shirt, may backpack (pinakamalayo) */
+.ppl-r{top:calc(945*var(--px));--k:.92;--skin:#d9a77e;--hair:#1d1a18;--shirt:#2a8f8b;--pants:#34435f;--shoe:#f1efe8;--t:.55s;--ph:-.2s;animation:pp-right 26s linear 0s infinite backwards}
+/* Tao C: pakaliwa, purple na shirt, mahaba ang buhok */
+.ppl-l2{top:calc(975*var(--px));--k:.96;--skin:#e8b890;--hair:#16130f;--shirt:#7a5fb5;--pants:#5a6b80;--shoe:#f1efe8;--t:.6s;--ph:-.45s;animation:pp-left 26s linear 5s infinite backwards}
+/* Tao B: pakaliwa, orange na shirt, mahaba ang buhok */
+.ppl-l{top:calc(1000*var(--px));--k:1;--skin:#f0c8a2;--hair:#4a2c1c;--shirt:#e0663f;--pants:#262c3d;--shoe:#3a2a22;--t:.6s;--ph:-.1s;animation:pp-left 26s linear 10s infinite backwards}
+/* Tao D: pakanan, dilaw na shirt (pinakamalapit sa harap kaya pinakamalaki) */
+.ppl-r2{top:calc(1020*var(--px));--k:1.04;--skin:#a8734f;--hair:#6b4a2a;--shirt:#d6b33a;--pants:#3b4a3a;--shoe:#2a2a2a;--t:.55s;--ph:-.33s;animation:pp-right 26s linear 15s infinite backwards}
+
+/* Gamit ang --ph, inililipat ang simula ng ugoy ng binti, braso at katawan */
+.ppl .pp-fig,.ppl .pp-leg,.ppl .pp-arm{animation-delay:var(--ph,0s)}
+
+/* ----- MGA BAHAGI NG KATAWAN ----- */
+.ppl i{position:absolute;display:block}
+/* Anino sa lupa (hindi gumagalaw pataas-baba) */
+.pp-shadow{left:calc(2*var(--px));top:calc(93*var(--px));width:calc(46*var(--px));height:calc(9*var(--px));background:radial-gradient(ellipse,rgba(30,30,25,.4),rgba(30,30,25,0) 70%)}
+/* .pp-fig = buong katawan. Bahagyang bumababa-tumataas habang naglalakad (bob):
+   bumababa kapag magkalayo ang dalawang paa, tumataas kapag magkalapit */
+.pp-fig{animation:pp-bob var(--t) ease-in-out infinite}
+
+/* BINTI: isang piraso na umiikot sa balakang (transform-origin). Ang paa ay ::after.
+   Magkasalungat ang galaw ng dalawang binti: "alternate" ang isa at "alternate-reverse" ang isa,
+   kaya kapag nakaabante ang kanan, nasa likod ang kaliwa (normal na hakbang) */
+.pp-leg{left:calc(20*var(--px));top:calc(50*var(--px));width:calc(11*var(--px));height:calc(46*var(--px));background:var(--pants);border-radius:calc(5*var(--px)) calc(5*var(--px)) calc(3*var(--px)) calc(3*var(--px));transform-origin:50% calc(3*var(--px))}
+.pp-leg::after{content:"";position:absolute;left:0;bottom:calc(-2*var(--px));width:calc(18*var(--px));height:calc(7*var(--px));background:var(--shoe);border-radius:calc(4*var(--px)) calc(7*var(--px)) calc(2*var(--px)) calc(2*var(--px))}
+.pp-leg.far{filter:brightness(.78);animation:pp-swing var(--t) ease-in-out infinite alternate-reverse}
+.pp-leg.near{animation:pp-swing var(--t) ease-in-out infinite alternate}
+
+/* BRASO: umiikot sa balikat. Kabaligtaran ng binti sa tabi nito (kapag nakaabante ang kanang paa,
+   nakaabante ang kaliwang braso), tulad ng totoong tao */
+.pp-arm{left:calc(21*var(--px));top:calc(19*var(--px));width:calc(8*var(--px));height:calc(30*var(--px));border-radius:calc(4*var(--px));background:linear-gradient(var(--shirt) 0 52%,var(--skin) 52%);transform-origin:50% calc(4*var(--px))}
+.pp-arm.far{filter:brightness(.8);animation:pp-armsw var(--t) ease-in-out infinite alternate}
+.pp-arm.near{animation:pp-armsw var(--t) ease-in-out infinite alternate-reverse}
+
+/* Ang --ph ay nagpapalipat ng simula ng ugoy ng binti, braso at katawan nang sabay-sabay,
+   kaya magkakaiba ang hakbang ng bawat tao at hindi sila sync */
+.ppl .pp-fig,.ppl .pp-leg,.ppl .pp-arm{animation-delay:var(--ph,0s)}
+
+/* Katawan, leeg, ulo, mukha (mata at ilong), buhok, backpack */
+.pp-torso{left:calc(16*var(--px));top:calc(17*var(--px));width:calc(20*var(--px));height:calc(38*var(--px));border-radius:calc(9*var(--px)) calc(9*var(--px)) calc(5*var(--px)) calc(5*var(--px));background:var(--shirt)}
+.pp-pack{left:calc(9*var(--px));top:calc(20*var(--px));width:calc(11*var(--px));height:calc(22*var(--px));border-radius:calc(5*var(--px));background:#3b3f4a}
+.pp-neck{left:calc(23*var(--px));top:calc(12*var(--px));width:calc(7*var(--px));height:calc(8*var(--px));background:var(--skin)}
+.pp-head{left:calc(18*var(--px));top:0;width:calc(17*var(--px));height:calc(19*var(--px));border-radius:50% 50% 46% 46%;background:var(--skin)}
+.pp-head::before{content:"";position:absolute;left:calc(11*var(--px));top:calc(8*var(--px));width:calc(2.5*var(--px));height:calc(2.5*var(--px));border-radius:50%;background:#2a1c14} /* mata */
+.pp-head::after{content:"";position:absolute;right:calc(-2*var(--px));top:calc(9*var(--px));width:calc(4*var(--px));height:calc(5*var(--px));border-radius:40%;background:var(--skin)} /* ilong */
+.pp-hair{left:calc(16*var(--px));top:calc(-2.5*var(--px));width:calc(18*var(--px));height:calc(13*var(--px));border-radius:calc(10*var(--px)) calc(8*var(--px)) calc(1*var(--px)) calc(6*var(--px));background:var(--hair)}
+.pp-long{left:calc(14*var(--px));top:calc(4*var(--px));width:calc(10*var(--px));height:calc(26*var(--px));border-radius:calc(5*var(--px)) calc(5*var(--px)) calc(9*var(--px)) calc(9*var(--px));background:var(--hair)} /* mahabang buhok sa likod */
+
+/* ----- ANG KOTSE -----
+   Pinakamababa (pinakaharap) na lane. Tumatakbo pakanan.
+   Bawat 66 segundo ay dumadaan ito nang isang beses. */
+.car{top:calc(1032*var(--px));width:calc(300*var(--px));height:calc(112*var(--px));animation:car-go var(--cycle) linear infinite}
+.car-in i,.car-in b{position:absolute;display:block}
+.car-shadow{left:calc(6*var(--px));top:calc(98*var(--px));width:calc(290*var(--px));height:calc(14*var(--px));background:radial-gradient(ellipse,rgba(30,30,25,.45),rgba(30,30,25,0) 70%)}
+/* Katawan ng kotse (pula) */
+.car-body{position:absolute;left:0;top:calc(42*var(--px));width:calc(300*var(--px));height:calc(38*var(--px));border-radius:calc(18*var(--px)) calc(24*var(--px)) calc(8*var(--px)) calc(8*var(--px));overflow:hidden;background:linear-gradient(#d4473f,#a82b2c 65%,#7d1f22)}
+.car-body::before{content:"";position:absolute;left:0;right:0;top:calc(15*var(--px));height:calc(2*var(--px));background:rgba(255,255,255,.22)} /* guhit sa gilid */
+/* Madilim na bilog sa paligid ng gulong (wheel arch) */
+.car-arch{width:calc(58*var(--px));height:calc(58*var(--px));border-radius:50%;background:#18181a;top:calc(20*var(--px))}
+/* Bubong at salamin (hugis trapezoid gamit ang clip-path) */
+.car-cabin{left:calc(72*var(--px));top:calc(8*var(--px));width:calc(150*var(--px));height:calc(38*var(--px));clip-path:polygon(0 100%,17% 6%,82% 6%,100% 100%);background:linear-gradient(#e0554c,#b43330)}
+.car-glass{left:calc(88*var(--px));top:calc(14*var(--px));width:calc(120*var(--px));height:calc(30*var(--px));clip-path:polygon(0 100%,15% 4%,48% 4%,48% 100%,52% 100%,52% 4%,82% 4%,100% 100%);background:linear-gradient(#9fc3dc,#5f86a3)}
+/* Headlight (harap), taillight (likod), at bumper */
+.car-lampf{left:calc(290*var(--px));top:calc(50*var(--px));width:calc(10*var(--px));height:calc(8*var(--px));border-radius:calc(3*var(--px));background:#fff3b0;box-shadow:0 0 calc(8*var(--px)) rgba(255,240,160,.8)}
+.car-lampr{left:0;top:calc(50*var(--px));width:calc(7*var(--px));height:calc(9*var(--px));border-radius:calc(3*var(--px));background:#8f1117}
+.car-bump{left:calc(2*var(--px));top:calc(72*var(--px));width:calc(296*var(--px));height:calc(7*var(--px));border-radius:calc(3*var(--px));background:#2e2e31}
+/* Gulong: umiikot nang paulit-ulit (car-spin) */
+.car-wheel{top:calc(62*var(--px));width:calc(46*var(--px));height:calc(46*var(--px));border-radius:50%;border:calc(7*var(--px)) solid #1c1c1e;
+  background:radial-gradient(circle,#2a2a2c 0 17%,transparent 19%),repeating-conic-gradient(#d8dbde 0 18deg,#8d9196 18deg 36deg);animation:car-spin .39s linear infinite}
+
+/* ----- MGA KEYFRAMES (ang aktuwal na galaw) -----
+   pp-right / pp-left : lakad mula sa labas ng screen hanggang sa kabilang labas (26 segundo)
+   car-go             : takbo ng kotse (nasa labas ng screen hanggang 41.7%, tatakbo hanggang 51.5%)
+   pp-swing           : ugoy ng binti (26 degrees pabalik at pasulong)
+   pp-armsw           : ugoy ng braso (28 degrees)
+   pp-bob             : bahagyang baba-taas ng katawan habang humahakbang
+   car-spin           : ikot ng gulong ng kotse */
+@keyframes pp-right{from{transform:translateX(calc(-140*var(--px)))}to{transform:translateX(calc(2210*var(--px)))}}
+@keyframes pp-left{from{transform:translateX(calc(2210*var(--px)))}to{transform:translateX(calc(-140*var(--px)))}}
+@keyframes car-go{0%,41.7%{transform:translateX(calc(-340*var(--px)))}51.5%,100%{transform:translateX(calc(2070*var(--px)))}}
+@keyframes pp-swing{from{transform:rotate(-26deg)}to{transform:rotate(26deg)}}
+@keyframes pp-armsw{from{transform:rotate(-28deg)}to{transform:rotate(28deg)}}
+@keyframes pp-bob{0%,100%{transform:translateY(calc(4.6*var(--px)))}50%{transform:translateY(0)}}
+@keyframes car-spin{to{transform:rotate(360deg)}}
+
+/* Para sa taong ayaw ng maraming galaw (accessibility): titigil ang animation
+   at nakatayo na lang ang mga tao sa magkakaibang puwesto. Walang kotse. */
+@media (prefers-reduced-motion:reduce){.ppl,.car,.pp-fig,.pp-leg,.pp-arm,.car-wheel{animation:none}
+  .ppl-r{transform:translateX(calc(300*var(--px)))}.ppl-l2{transform:translateX(calc(750*var(--px)))}.ppl-l{transform:translateX(calc(1300*var(--px)))}.ppl-r2{transform:translateX(calc(1700*var(--px)))}.car{display:none}}
